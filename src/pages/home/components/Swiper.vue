@@ -1,9 +1,9 @@
 <template>
 	<div class="wrapper">
-		<swiper :options="swiperOption">
+		<swiper :options="swiperOption" v-if="showSwiper">
 		    <!-- slides -->
 		    <!-- swiper-slide 有多少个轮播图就有多少个 -->
-		    <swiper-slide v-for="item of swiperList" :key="item.id">
+		    <swiper-slide v-for="item of list" :key="item.id">
 		    	<img class="swiper-img" :src="item.imgUrl">
 		    </swiper-slide>
 		    
@@ -17,6 +17,14 @@
 <script>
 	export default {
 		name: 'HomeSwiper',
+		props: {
+			list: Array
+		},
+		computed: {
+			showSwiper() {
+				return this.list.length;
+			}
+		},
 		data() {
 			return {
 				swiperOption: {
@@ -24,20 +32,7 @@
 					loop: true,   //无缝滚动
 					autoplay: 2000, //自动轮播
 					autoplayDisableOnInteraction: false
-				},
-				swiperList: [{
-					id: '0001',
-					imgUrl: 'https://img1.qunarzz.com/vc/a5/e0/64/c6bd8680fb67247db15df6057b.jpg'
-				},{
-					id: '0002',
-					imgUrl: 'https://img1.qunarzz.com/vc/a4/36/26/07c5904b545d66b3abe72e9dfa.jpg'
-				},{
-					id: '0003',
-					imgUrl: 'https://img1.qunarzz.com/vc/2f/8e/51/cb4d31b360c836f7d1bbe83c13.jpg'
-				},{
-					id: '0004',
-					imgUrl: 'https://img1.qunarzz.com/vc/a4/29/dd/4a0734b77f675da2a8ca4a9879.jpg'
-				}]
+				}
 			}
 		}
 	}
