@@ -2,6 +2,7 @@
 	<div class="wrapper">
 		<swiper :options="swiperOption">
 		    <!-- slides -->
+		    <!-- swiper-slide 有多少个轮播图就有多少个 -->
 		    <swiper-slide v-for="item of swiperList" :key="item.id">
 		    	<img class="swiper-img" :src="item.imgUrl">
 		    </swiper-slide>
@@ -20,7 +21,9 @@
 			return {
 				swiperOption: {
 					pagination: '.swiper-pagination', // 分页器
-					loop: true   //循环轮播
+					loop: true,   //无缝滚动
+					autoplay: 2000, //自动轮播
+					autoplayDisableOnInteraction: false
 				},
 				swiperList: [{
 					id: '0001',
@@ -28,6 +31,12 @@
 				},{
 					id: '0002',
 					imgUrl: 'https://img1.qunarzz.com/vc/a4/36/26/07c5904b545d66b3abe72e9dfa.jpg'
+				},{
+					id: '0003',
+					imgUrl: 'https://img1.qunarzz.com/vc/2f/8e/51/cb4d31b360c836f7d1bbe83c13.jpg'
+				},{
+					id: '0004',
+					imgUrl: 'https://img1.qunarzz.com/vc/a4/29/dd/4a0734b77f675da2a8ca4a9879.jpg'
 				}]
 			}
 		}
