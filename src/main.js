@@ -6,9 +6,10 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import fastClick from 'fastClick'
-import './assets/sytles/reset.css'  
-import './assets/sytles/border.css'  //解决移动端1px边框问题
+import fastClick from 'fastClick'  //安装:cnpm install fastclick --save
+import 'styles/reset.css'  
+import 'styles/border.css'  //解决移动端1px边框问题
+import 'styles/iconfont.css' //字体图标
 
 Vue.config.productionTip = false
 fastClick.attach(document.body); //解决移动端点击事件300毫秒延迟问题
