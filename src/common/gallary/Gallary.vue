@@ -2,7 +2,7 @@
 	<div class="container" @click="handleGallaryClick">
 		<div class="wrapper">
 			<swiper :options="swiperOptions">
-			    <swiper-slide
+			    <swiper-slide class="aa"
 					v-for="(item, index) of imgs"
 					:key="index"
 			    >
@@ -63,7 +63,8 @@
 			padding-bottom: 100%;
 			.gallary-img
 				width: 100%;
+				vertical-align:center;
 			.swiper-pagination
 				color: #fff;
-				bottom: -1rem;
+				bottom: -2rem;
 </style>
