@@ -5,7 +5,8 @@
 				<div class="title border-topbottom">当前城市</div>
 				<div class="button-list">
 					<div class="button-wrapper">
-						<div class="button">深圳</div>
+						<!-- <div class="button">{{this.$store.state.city}}</div> -->
+						<div class="button">{{this.currentCity}}</div>
 					</div>	
 				</div>
 			</div>
@@ -16,6 +17,7 @@
 						class="button-wrapper" 
 						v-for="item of hot" 
 						:key="item.id"
+						@click="handleCityClick(item.name)"
 					>
 						<div class="button">{{item.name}}</div>
 					</div>	
@@ -33,6 +35,7 @@
 						class="item border-bottom"
 						v-for="innerItem of item"
 						:key="innerItem.id"
+						@click="handleCityClick(innerItem.name)"
 					>
 						{{innerItem.name}}
 					</div>
@@ -44,11 +47,36 @@
 
 <script>
 	import BScroll from 'better-scroll'  //第三方插件
+	import { mapState, mapMutations } from 'vuex'
+
 	export default {
 		name: 'CityList',
 		mounted() {
 			// this.scroll会到data里先去寻找，找不到会去别的地方搜索
 			this.scroll = new BScroll(this.$refs.wrapper);
+		},
+		computed: {
+			//把vuex里state定义的公共数据city映射到组件的计算属性中，映射名叫currentCity;在其他地方使用这个数据的时候，可以直接用this.currentCity
+			...mapState({
+				currentCity: 'city'
+			})
+		},
+		methods: {
+			handleCityClick(city) {
+				//也可以直接利用commit去调用mutations方法里定义的changeCity方法
+				// this.$store.commit('changeCity',city);
+
+				this.changeCity(city);
+
+				//this.$store是vuex创建的全局仓库,然后用disaptch方法去触发 actions里定义的changeCity方法，并传入参数city  (store/index.js)
+				// this.$store.dispatch('changeCity',city);
+
+				//跳转到首页
+				this.$router.push('/');
+			},
+
+			//把vuex里的mutation里定义的方法映射到该组件里名字叫changeCity方法中,调用mutation里的方法就可以直接用this.changeCity()
+			...mapMutations(['changeCity'])
 		},
 		props: {
 			cities: Object,

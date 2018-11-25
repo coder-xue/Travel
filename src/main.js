@@ -6,6 +6,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import store from './store/index.js'
 import fastClick from 'fastClick'  //安装:cnpm install fastclick --save
 import VueAwesomeSwiper from 'vue-awesome-swiper'  //轮播图插件
 import 'swiper/dist/css/swiper.css' //轮播图插件样式文件
@@ -20,6 +21,7 @@ Vue.use(VueAwesomeSwiper, /* { default global options } */)
 /* eslint-disable no-new */
 new Vue({
   el: '#app',           //根实例挂载的是index.html上id=app的标签
+  store,				//全局使用store
   router,               // 路由就是根据网址的不同，返回不同的内容给用户 
   components: { App },  //注册路由
   template: '<App/>'    //使用的模板是 App.vue 这个组件

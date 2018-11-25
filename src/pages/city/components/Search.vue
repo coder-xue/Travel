@@ -9,6 +9,7 @@
 					class="search-item border-bottom" 
 					v-for="item of list"
 					:key="item.id"
+					@click="handleCityClick(item.name)"
 					>{{item.name}}
 				</li>
 			</ul>
@@ -21,6 +22,8 @@
 
 <script>
 	import Bscroll from 'better-scroll';
+	import {mapMutations} from 'vuex';
+
 	export default {
 		name: 'CitySearch',
 		data() {
@@ -62,7 +65,24 @@
 			}
 		},
 		mounted() {
-			this.scroll = new Bscroll(this.$refs.search);
+			this.scroll = new Bscroll(this.$refs.search); //增加滚动效果
+		},
+		methods: {
+			handleCityClick(city) {
+				//也可以直接利用commit去调用mutations方法里定义的changeCity方法
+				// this.$store.commit('changeCity',city);
+
+				this.changeCity(city);
+
+				//this.$store是vuex创建的全局仓库,然后用disaptch方法去触发 actions里定义的changeCity方法，并传入参数city  (store/index.js)
+				// this.$store.dispatch('changeCity',city);
+
+				//跳转到首页
+				this.$router.push('/');
+			},
+
+			//把vuex里的mutation里定义的方法映射到该组件里名字叫changeCity方法中,调用mutation里的方法就可以直接用this.changeCity()
+			...mapMutations(['changeCity'])
 		}
 	}
 </script>

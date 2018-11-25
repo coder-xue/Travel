@@ -9,7 +9,9 @@
 		</div>
 		<router-link to="/city">
 			<div class="header-right">
-				{{city}}
+				<!-- store是由vuex创建的的,由于store被注入到了vue的根实例中,所以可以全局使用  在store/index.js中引入了vuex并创建了store -->
+				<!-- {{this.$store.state.city}} -->
+				{{this.city}}
 				<span class="iconfont arrow-icon">&#xe64a;</span>
 			</div>
 		</router-link>
@@ -18,10 +20,12 @@
 </template>
 
 <script>
+	import { mapState } from 'vuex';
 	export default {
 		name: 'HomeHeader',
-		props: {
-			city: String
+		computed: {
+			//mapState 是指把vuex里state定义的数据映射到组件的computed中,名字叫city,调用该数据可以直接用this.city
+			...mapState(['city'])
 		}
 	}
 </script>
@@ -52,7 +56,8 @@
 				font-size: .4rem;
 		.header-right
 			color: #fff;
-			width: 1.24rem;
+			min-width: 1.04rem;
+			padding: 0 .1rem;
 			float: rigth;
 			text-align: center;
 			.arrow-icon
