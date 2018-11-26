@@ -1,18 +1,19 @@
 <template>
 	<div>
 		<div class="banner" @click="handleBannerClick">
-			<img class="banner-img" src="https://imgs.qunarzz.com/p/tts4/1810/2e/b86d2cb51b389a02.jpg_r_390x260x90_f2c1cd79.jpg">
+			<img class="banner-img" :src="bannerImg">
 			<div class="banner-info">
 				<div class="banner-title">
-					泰国苏梅岛
+					{{sightName}}
 				</div>
 				<div class="banner-number">
-					<span class="iconfont banner-icon">&#xe632;39</span>
+					<span class="iconfont banner-icon">&#xe632;{{this.bannerImgs.length}}
+					</span>
 				</div>
 			</div>
 		</div>
 		<common-gallary 
-			:imgs="imgs" 
+			:imgs="bannerImgs" 
 			v-show="showGallary"
 			@close="handleGallaryClose"
 		></common-gallary>
@@ -26,6 +27,11 @@
 		name: 'DetailBanner',
 		components: {
 			CommonGallary
+		},
+		props: {
+			sightName: String,
+			bannerImg: String,
+			bannerImgs: Array
 		},
 		data() {
 			return {

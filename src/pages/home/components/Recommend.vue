@@ -4,6 +4,7 @@
 		<ul>
 			<!-- border-bottom 为1px边框 -->
 			<!-- router-link标签默认地会转换成a标签,加上一个tag属性,就会使router-link标签转变成li标签 -->
+			<!-- :to='{name:"Detail",params:{id:item.id}}' -->
 			<router-link 
 				:to='"/detail/" + item.id'
 				tag="li" 
