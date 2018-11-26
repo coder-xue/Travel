@@ -53,6 +53,7 @@
 		name: 'CityList',
 		mounted() {
 			// this.scroll会到data里先去寻找，找不到会去别的地方搜索
+			//{click:true} 解决了在手机端城市页面无法点击的Bug
 			this.scroll = new BScroll(this.$refs.wrapper,{click:true});
 		},
 		computed: {
@@ -93,6 +94,10 @@
 				}
 				
 			}
+		},
+		//解决了在手机端再次进入城市选择页面时出现无法滚动的bug
+		activated() {
+			this.scroll.refresh();
 		}
 	}
 </script>
