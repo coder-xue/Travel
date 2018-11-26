@@ -7,6 +7,7 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import store from './store/index.js'
+import 'babel-polyfill'    //全局范围内添加es6的api
 import fastClick from 'fastClick'  //安装:cnpm install fastclick --save
 import VueAwesomeSwiper from 'vue-awesome-swiper'  //轮播图插件
 import 'swiper/dist/css/swiper.css' //轮播图插件样式文件

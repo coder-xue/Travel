@@ -53,7 +53,7 @@
 		name: 'CityList',
 		mounted() {
 			// this.scroll会到data里先去寻找，找不到会去别的地方搜索
-			this.scroll = new BScroll(this.$refs.wrapper);
+			this.scroll = new BScroll(this.$refs.wrapper,{click:true});
 		},
 		computed: {
 			//把vuex里state定义的公共数据city映射到组件的计算属性中，映射名叫currentCity;在其他地方使用这个数据的时候，可以直接用this.currentCity

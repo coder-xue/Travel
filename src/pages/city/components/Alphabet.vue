@@ -1,12 +1,13 @@
 <template>
 	<ul class="list">
+		<!-- .prevent 解决了在手机端,字母列表滚动的时候出现整个页面滚动的bug -->
 		<li 
 			class="item" 
 			v-for="item of letters" 
 			:key="item"
 			:ref="item"
 			@click="handleLetterClick"
-			@touchstart="handleTouchStart"
+			@touchstart.prevent="handleTouchStart"
 			@touchmove="handleTouchMove"
 			@touchend="handleTouchEnd"
 		>
