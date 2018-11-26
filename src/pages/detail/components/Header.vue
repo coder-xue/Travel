@@ -47,11 +47,20 @@
 			}
 		},
 		//页面再次进入时执行
-		activated() {
+		// activated() {
+		// 	window.addEventListener('scroll',this.handleScroll);
+		// },
+
+		//页面离开时执行
+		// deactivated() {
+		// 	window.removeEventListener('scroll',this.handleScroll);
+		// }
+
+		mounted() {
 			window.addEventListener('scroll',this.handleScroll);
 		},
-		//页面离开时执行
-		deactivated() {
+
+		beforeDestroy() {
 			window.removeEventListener('scroll',this.handleScroll);
 		}
 	}

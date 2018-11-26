@@ -38,6 +38,7 @@
 		},
 		methods: {
 			getDetailInfo() {
+				//http://localhost:8080/api/detail.json?id=0001
 				axios.get('/api/detail.json', {
 					params: {
 						id: this.$route.params.id
@@ -61,5 +62,5 @@
 
 <style lang="stylus" scoped>
 	.container
-		height: 100%;
+		height: 50rem;
 </style>
