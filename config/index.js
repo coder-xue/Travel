@@ -10,6 +10,20 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
+
+    // 80端口是我本地wamp服务器的端口,端口号默认是80,当使用的是http协议，端口号可以不写。
+    // 当把打包好的文件丢到服务端的根目录下时,在浏览器里输入localhost就可以访问了
+    // proxyTable: {
+    //     '/api': {
+    //     target: 'http://localhost:80',
+        
+    //   }
+    // },
+
+
+    //8080端口是本地webpack-dev-server服务器的端口
+    //当访问api路径时，会把这个路径的请求转发到 localhost:8080 上,
+    // 并把以api开头的地址映射到本地webpack-dev-server服务器 static/mock 目录下
     proxyTable: {
         '/api': {
         target: 'http://localhost:8080',
@@ -57,7 +71,7 @@ module.exports = {
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/',
+    assetsPublicPath: '/travel',  //表示打包的项目要运行在服务端根目录的travel路径下
 
     /**
      * Source Maps
